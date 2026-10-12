@@ -1,0 +1,71 @@
+# ============================================
+# Git Ignore Configuration for Gita Voice RAG
+# ============================================
+
+# Virtual environments
+.venv/
+env/
+venv/
+ENV/
+
+# Python caches and build artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Secrets and environment variables (CRITICAL)
+.env
+*.env
+.env.*
+!.env.example
+
+# Large model weight checkpoints (Downloaded via download_models.py)
+models/
+*.bin
+*.safetensors
+*.onnx
+*.pt
+*.pth
+*.gguf
+
+# Vector Database and cache directories
+data/index/
+data/chroma_db/
+chroma/
+.cache/
+*.sqlite
+*.sqlite3
+*.db
+
+# Testing and linters
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# IDE, OS and temporary files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+*.log
+scratch/

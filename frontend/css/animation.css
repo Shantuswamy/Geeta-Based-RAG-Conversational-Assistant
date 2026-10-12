@@ -1,0 +1,97 @@
+/* Keyframe Animations — Stitch Sacred Resonance Theme */
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 15px rgba(233, 195, 73, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 35px rgba(233, 195, 73, 0.65));
+  }
+}
+
+@keyframes waveform {
+  0% {
+    transform: scaleY(0.5);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scaleY(1.35);
+    opacity: 1;
+  }
+}
+
+@keyframes particle {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(20px);
+    opacity: 0;
+  }
+}
+
+@keyframes ringPing {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+@keyframes auraPulse {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes livePulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.85);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+.animate-waveform {
+  animation: waveform 1.5s ease-in-out infinite alternate;
+}
+
+.animate-particle {
+  animation: particle 10s linear infinite;
+}
+
+.animate-ring-ping {
+  animation: ringPing 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}

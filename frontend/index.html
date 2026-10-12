@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GitaRAG - Spiritual Voice Assistant</title>
+  <meta name="description" content="Voice-reactive AI Sanctuary for the Bhagavad Gita featuring real-time darshan, speech synthesis, and 2D viseme animation." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="./css/design-tokens.css" />
+  <link rel="stylesheet" href="./css/animation.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body data-state="idle">
+  <!-- Immersive Vrindavan Background -->
+  <div class="scene-background">
+    <img src="./assets/sacred_bg.png" alt="Sacred Vrindavan Waterfall" class="scene-bg-img" />
+    <div class="scene-overlay"></div>
+  </div>
+
+  <!-- Particle Effect Layer -->
+  <div class="particles-container" id="particles">
+    <!-- Generated dynamically by ParticlesField -->
+  </div>
+
+  <!-- TopAppBar -->
+  <header class="app-header">
+    <div class="flex items-center gap-4">
+      <h1 class="brand-title">GitaRAG</h1>
+      <div class="status-indicator">
+        <span class="live-dot" id="status-live-dot"></span>
+        <span id="connection-status-text" style="font-size: 0.75rem; color: var(--color-on-surface-variant); font-weight: 500;">Sacred Sanctuary</span>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 0.85rem;">
+      <button class="glass-pill" id="open-settings-btn" title="Sanctum Settings" style="display: flex; align-items: center; justify-content: center; width: 2.4rem; height: 2.4rem; border-radius: 9999px; color: var(--color-on-surface-variant); cursor: pointer;">
+        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0; font-size: 1.25rem;">settings</span>
+      </button>
+      <button class="glass-pill" id="fullscreen-btn" title="Fullscreen" style="display: flex; align-items: center; justify-content: center; width: 2.4rem; height: 2.4rem; border-radius: 9999px; color: var(--color-on-surface-variant); cursor: pointer;">
+        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0; font-size: 1.25rem;">fullscreen</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="character-stage">
+    <!-- Krishna Avatar & Lip-Sync Viseme System -->
+    <div class="avatar-wrapper animate-float" id="krishna-character-wrapper">
+      <div class="avatar-halo animate-pulse-glow"></div>
+      <div class="avatar-img-container">
+        <!-- Main Portrait of Lord Krishna -->
+        <img id="krishna-avatar" alt="Lord Krishna Avatar" class="krishna-avatar-img animate-pulse-glow" src="./assets/krishna_avatar.png" title="Lord Krishna • Bhagavad Gita Darshan" />
+
+        <!-- Speech Glow Ring around face/lips -->
+        <div class="speech-glow-ring" id="speech-glow-ring"></div>
+
+        <!-- 2D Viseme Mouth Overlay Layer -->
+        <div class="viseme-mouth-container" id="viseme-mouth-container">
+          <img src="./assets/mouth_closed.png" alt="Mouth closed" class="mouth-state-img active" id="mouth-closed" />
+          <img src="./assets/mouth_half.png" alt="Mouth half open" class="mouth-state-img" id="mouth-half" />
+          <img src="./assets/mouth_open.png" alt="Mouth open" class="mouth-state-img" id="mouth-open" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive UI Overlay at Bottom -->
+    <div class="interactive-overlay">
+      <!-- Caption Card -->
+      <div class="caption-card glass-card" id="subtitle-card">
+        <div class="caption-meta">
+          <span class="speaker-badge">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 1rem;">psychiatry</span>
+            <span id="speaker-tag">Shri Krishna</span>
+          </span>
+          <span class="verse-badge" id="verse-chip-text">Bhagavad Gita 2.47</span>
+        </div>
+        <p class="caption-text" id="subtitle-text">
+          "How can I guide you with the wisdom of the Gita today?"
+        </p>
+      </div>
+
+      <!-- Interaction Core -->
+      <div class="interaction-core">
+        <!-- Preset Prompts -->
+        <div class="preset-container">
+          <button class="preset-chip glass-pill" onclick="triggerPreset('How do I conquer anxiety and find peace of mind?')">
+            <span class="material-symbols-outlined" style="color: var(--color-tertiary); font-size: 0.95rem;">lightbulb</span>
+            <span>"How do I conquer anxiety?"</span>
+          </button>
+          <button class="preset-chip glass-pill" onclick="triggerPreset('What is the true essence of Karma Yoga?')">
+            <span class="material-symbols-outlined" style="color: var(--color-secondary); font-size: 0.95rem;">psychology</span>
+            <span>"What is Karma Yoga?"</span>
+          </button>
+        </div>
+
+        <!-- Mic Button with Glow & Ping Rings -->
+        <div class="mic-btn-wrapper">
+          <div class="mic-ping-ring" id="mic-ping-ring"></div>
+          <button class="primary-mic-button mic-button-glow" id="mic-trigger" title="Speak with Shri Krishna">
+            <span class="material-symbols-outlined mic-icon" style="font-variation-settings: 'FILL' 1; font-size: 2.25rem;">mic</span>
+          </button>
+        </div>
+
+        <!-- Minimal Real-time Waveform Equalizer -->
+        <div class="waveform-equalizer" id="waveform-container">
+          <!-- Dynamically populated and animated by SubtitleCard visualizer -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Floating Peacock Feather Indicator -->
+  <div class="peacock-indicator animate-float" style="animation-delay: 1s;" title="Divine Presence">
+    <span class="material-symbols-outlined" style="color: var(--color-tertiary); font-size: 2.25rem; filter: drop-shadow(0 0 10px rgba(233,195,73,0.5));">psychiatry</span>
+  </div>
+
+  <!-- Settings Slide-out Drawer -->
+  <div class="settings-overlay" id="settings-overlay">
+    <div class="settings-drawer">
+      <div>
+        <div class="settings-header">
+          <h2>Sanctum Settings</h2>
+          <button class="glass-pill" id="close-settings-btn" style="width: 2rem; height: 2rem; border-radius: 9999px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--color-on-surface-variant);">
+            <span class="material-symbols-outlined" style="font-size: 1.25rem;">close</span>
+          </button>
+        </div>
+
+        <!-- Voice Selection -->
+        <div class="settings-group">
+          <label class="settings-label" for="setting-voice">
+            <span class="material-symbols-outlined" style="font-size: 1rem; color: var(--color-tertiary);">record_voice_over</span>
+            Spoken Voice (Kokoro)
+          </label>
+          <select id="setting-voice" class="settings-select">
+            <option value="af_heart">af_heart (Default — Divine Serene)</option>
+            <option value="am_adam">am_adam (Warm Reverent Male)</option>
+            <option value="af_bella">af_bella (Melodic Contemplative)</option>
+            <option value="am_michael">am_michael (Deep Resonant Male)</option>
+            <option value="bf_emma">bf_emma (Clear British Classical)</option>
+            <option value="bm_george">bm_george (Stately British Male)</option>
+          </select>
+        </div>
+
+        <!-- Language Selection -->
+        <div class="settings-group">
+          <label class="settings-label" for="setting-lang">
+            <span class="material-symbols-outlined" style="font-size: 1rem; color: var(--color-secondary);">translate</span>
+            Sanctum Language
+          </label>
+          <select id="setting-lang" class="settings-select">
+            <option value="en">English (Universal)</option>
+            <option value="hi">Hindi (हिन्दी)</option>
+            <option value="sa">Sanskrit (संस्कृतम्)</option>
+          </select>
+        </div>
+
+        <!-- Atmosphere Theme -->
+        <div class="settings-group">
+          <label class="settings-label">
+            <span class="material-symbols-outlined" style="font-size: 1rem; color: var(--color-tertiary);">palette</span>
+            Atmosphere Theme
+          </label>
+          <div class="theme-btn-group">
+            <button class="theme-opt-btn active" id="theme-dusk-btn">
+              <span class="material-symbols-outlined" style="font-size: 1rem;">dark_mode</span>
+              Sacred Dusk
+            </button>
+            <button class="theme-opt-btn" id="theme-dawn-btn">
+              <span class="material-symbols-outlined" style="font-size: 1rem;">wb_sunny</span>
+              Sacred Dawn
+            </button>
+          </div>
+        </div>
+
+        <!-- WebSocket URL -->
+        <div class="settings-group">
+          <label class="settings-label" for="setting-ws-url">
+            <span class="material-symbols-outlined" style="font-size: 1rem; color: var(--color-emerald);">hub</span>
+            Backend WebSocket URL
+          </label>
+          <input type="text" id="setting-ws-url" class="settings-input" value="ws://localhost:8000/ws/voice-chat" placeholder="ws://localhost:8000/ws/voice-chat" />
+        </div>
+      </div>
+
+      <div style="font-size: 0.72rem; color: var(--color-on-surface-variant); text-align: center; border-top: 1px solid rgba(233,195,73,0.15); padding-top: 1.25rem;">
+        GitaRAG Voice Assistant • Sacred Resonance v2.0
+      </div>
+    </div>
+  </div>
+
+  <!-- Main JavaScript App Entry Point -->
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>

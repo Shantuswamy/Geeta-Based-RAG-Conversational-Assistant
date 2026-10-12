@@ -1,0 +1,71 @@
+/* Sacred Resonance & Sacred Dawn Design Tokens */
+:root {
+  /* Fonts */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Theme: Sacred Dusk (Default) */
+  --color-bg: #16130b;
+  --color-surface: #16130b;
+  --color-surface-container: #221f16;
+  --color-surface-container-low: #1e1b13;
+  --color-surface-container-high: #2d2a20;
+  --color-surface-container-highest: #38342b;
+  --color-on-surface: #e9e2d3;
+  --color-on-surface-variant: #c3c8c1;
+  --color-primary: #b4cdb8;
+  --color-primary-container: #1b3022;
+  --color-on-primary: #203527;
+  --color-tertiary: #e9c349;
+  --color-tertiary-container: #cba72f;
+  --color-on-tertiary: #241a00;
+  --color-secondary: #7fd2ea;
+  --color-secondary-container: #007287;
+  --color-on-secondary: #003641;
+  --color-outline: #8d928c;
+  --color-emerald: #34d399;
+
+  /* Glassmorphism & Effects */
+  --glass-bg: rgba(22, 19, 11, 0.78);
+  --glass-pill-bg: rgba(27, 48, 34, 0.55);
+  --glass-border: rgba(233, 195, 73, 0.22);
+  --glass-border-hover: rgba(233, 195, 73, 0.55);
+  --glass-blur: 24px;
+  --glass-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(233, 195, 73, 0.2);
+  --aura-glow: radial-gradient(circle, rgba(233, 195, 73, 0.55) 0%, rgba(127, 210, 234, 0.25) 40%, rgba(27, 48, 34, 0.1) 65%, transparent 75%);
+  --mic-gradient: linear-gradient(135deg, #ffe088 0%, #e9c349 50%, #cba72f 100%);
+  --contact-shadow: radial-gradient(ellipse at center, rgba(12, 22, 8, 0.85) 0%, rgba(8, 14, 6, 0.55) 45%, transparent 70%);
+}
+
+/* Theme: Sacred Dawn */
+[data-theme="dawn"] {
+  --color-bg: #1c1510;
+  --color-surface: #1e1610;
+  --color-surface-container: #2c2016;
+  --color-surface-container-low: #241a12;
+  --color-surface-container-high: #382a1d;
+  --color-surface-container-highest: #443425;
+  --color-on-surface: #fdf5e6;
+  --color-on-surface-variant: #dfcfbc;
+  --color-primary: #f0c987;
+  --color-primary-container: #42260e;
+  --color-on-primary: #341a05;
+  --color-tertiary: #f59e0b;
+  --color-tertiary-container: #d97706;
+  --color-on-tertiary: #1f1200;
+  --color-secondary: #fb923c;
+  --color-secondary-container: #9a3412;
+  --color-on-secondary: #431407;
+  --color-outline: #a8947f;
+  --color-emerald: #10b981;
+
+  --glass-bg: rgba(30, 22, 16, 0.82);
+  --glass-pill-bg: rgba(66, 38, 14, 0.55);
+  --glass-border: rgba(245, 158, 11, 0.28);
+  --glass-border-hover: rgba(245, 158, 11, 0.65);
+  --glass-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(245, 158, 11, 0.25);
+  --aura-glow: radial-gradient(circle, rgba(245, 158, 11, 0.55) 0%, rgba(251, 146, 60, 0.3) 40%, rgba(66, 38, 14, 0.12) 65%, transparent 75%);
+  --mic-gradient: linear-gradient(135deg, #fde68a 0%, #f59e0b 50%, #d97706 100%);
+  --contact-shadow: radial-gradient(ellipse at center, rgba(20, 12, 6, 0.85) 0%, rgba(14, 8, 4, 0.55) 45%, transparent 70%);
+}
